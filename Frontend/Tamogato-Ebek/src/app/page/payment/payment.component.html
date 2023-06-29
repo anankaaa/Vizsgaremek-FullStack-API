@@ -1,0 +1,57 @@
+<div class="payment col-6 offset-3 pt-5">
+  <div class="dialog shadow p-3">
+    <div *ngIf="aid$ | async as aid">
+      <form action="" #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm, aid)">
+        <div
+          class="header col-12 p-4 border-0 border-radius-xl my-3 text-secondary mb-5"
+        >
+          <h1 class="modal-title fs-5" style="font-weight: bold">
+            Támogatás - {{ aid.title }}
+          </h1>
+          <hr />
+        </div>
+        <div class="body align-items-center justify-content-center">
+          <div><h5>Támogatói összeg</h5></div>
+          <small>(Minimum 100Ft)</small>
+          <input
+            id="amount"
+            type="number"
+            name="amount"
+            class="form-control mt-4"
+            [(ngModel)]="aid.payment"
+            value=""
+            pattern="^([1-9][0-9]{2,6}|100000000)$"
+            required
+          />
+          <div>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="condition"
+              checked
+              aria-label="Checkbox for following text input"
+            />
+            <small class="conditions mt-3"> Elfogadom a feltételeket</small>
+          </div>
+        </div>
+        <div class="footer mt-5">
+          <button
+            type="button-close"
+            class="btn btn-secondary me-2"
+            data-bs-dismiss="modal"
+          >
+            Mégse
+          </button>
+          <button
+            (click)="showToaster()"
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="eventForm.invalid"
+          >
+            Fizetés
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

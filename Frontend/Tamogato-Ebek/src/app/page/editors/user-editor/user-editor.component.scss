@@ -1,0 +1,30 @@
+@use "../../../../assets/modules/colors" as *;
+
+.header {
+  background-color: $headerBackground;
+  border-radius: 2px;
+  box-shadow: 4px 4px 2px $boxshadowGrey;
+  margin-top: 10px;
+}
+
+.container {
+  background: linear-gradient($backgroundDarkgreen, $backgroundDarkYellow);
+  border-radius: 5px;
+}
+
+small {
+  color: $buttonGreenHover;
+  font-weight: bold;
+  font-size: medium;
+  font-style: italic;
+}
+
+.error-message {
+  font-style: italic;
+  color: $buttonGreen;
+  font-size: small;
+}
+
+label {
+  font-weight: bolder;
+}

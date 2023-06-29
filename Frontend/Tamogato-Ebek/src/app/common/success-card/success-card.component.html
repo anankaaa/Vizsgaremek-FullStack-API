@@ -1,0 +1,30 @@
+<div class="accordion accordion-flush mt-2" id="accordionFlushSuccess">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#flush-collapse-' + target"
+        aria-expanded="false"
+        aria-controls="flush-collapseOne"
+      >
+        {{ success.title }}
+      </button>
+    </h2>
+
+    <div
+      id="{{ 'flush-collapse-' + target }}"
+      class="accordion-collapse collapse"
+      aria-labelledby="flush-headingOne"
+      data-bs-parent="#accordionFlushSuccess"
+    >
+      <div class="accordion-body">
+        {{ success.details }}
+      </div>
+      <div class="accordion-body">
+        {{ success.place }}, <small>{{ success.date }}</small>
+      </div>
+    </div>
+  </div>
+</div>

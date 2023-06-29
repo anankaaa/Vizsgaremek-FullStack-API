@@ -1,0 +1,21 @@
+<h1 class="col-12 p-4 border-0 border-radius-xl my-3 text-secondary">
+  Támogatható események
+</h1>
+
+<div class="row">
+  <div *ngIf="aidList$ | async as aidList" class="col-12">
+    <button
+      class="btn btn-primary btn-lg mb-3 ms-3"
+      [routerLink]="['/aid-editor', 0]"
+    >
+      Új esemény
+    </button>
+    <app-data-table
+      [listers]="aidList"
+      [columns]="columns"
+      (onDelete)="onDelete($event)"
+      (onEdit)="onEdit($event)"
+    >
+    </app-data-table>
+  </div>
+</div>

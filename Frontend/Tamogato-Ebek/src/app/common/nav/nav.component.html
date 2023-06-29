@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Támogató Ebek 🐾</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="home"
+            >Főoldal</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="dogs">Kutyáink</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="aid">Amire gyűjtünk</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="success">Ahol már bizonyítottunk</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav me-end mb-2 me-3 mb-lg-0">
+        <li *ngIf="isAuth" class="nav-item me-2">
+          <a class="nav-link active user">Hello, {{ user.name }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active users me-2" href="users">Felhasználók</a>
+        </li>
+        <li *ngIf="isAuth" class="nav-item">
+          <a class="nav-link active profile" href="myprofile">Profilom</a>
+        </li>
+      </ul>
+
+      <button
+        *ngIf="!isAuth"
+        class="btn btn-outline-success me-2 login"
+        type="submit"
+        routerLink="login"
+      >
+        Bejelentkezés
+      </button>
+      <button
+        *ngIf="isAuth"
+        (click)="onLogout()"
+        class="logout btn btn-secondary"
+        routerLink="login"
+      >
+        <i class="fa fa-sign-out"></i>
+      </button>
+    </div>
+  </div>
+</nav>

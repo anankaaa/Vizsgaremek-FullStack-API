@@ -1,0 +1,51 @@
+<div class="container-fluid pt-3">
+  <div class="container pt-3 text-center mt-5">
+    <h1 class="pb-5 pt-3">AHOL MÁR BIZONYÍTOTTUNK</h1>
+
+    <h4 class="pb-3">
+      A támogató kutyák az élet számos területén már bizonyítottak. Az alábbi
+      listában látható hol találkozhattatok már velük.
+    </h4>
+    <hr />
+
+    <button class="btn btn-link btn-lg mb-3" routerLink="/aid" type="button">
+      Adományozok
+    </button>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 mt-5">
+    <app-success-card
+      class="d-flex justify-content-center align-item-center"
+      *ngFor="
+        let success of successList$
+          | async
+          | slice : (currentPage - 1) * pageSize : currentPage * pageSize;
+        index as i
+      "
+      [success]="success"
+      [target]="i"
+    ></app-success-card>
+  </div>
+
+  <div class="pagination row text-center ps-3 mt-5">
+    <div class="col-12">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="previous page-link" (click)="jumpPrevious()">Előző</a>
+          </li>
+
+          <li *ngFor="let pageNum of getPageNumbers()" class="page-item">
+            <a class="page-link" (click)="jumpToPage(pageNum)">
+              {{ pageNum }}
+            </a>
+          </li>
+
+          <li class="page-item">
+            <a class="next page-link" (click)="jumpNext()">Köv.</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

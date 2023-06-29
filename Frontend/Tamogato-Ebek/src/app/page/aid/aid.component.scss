@@ -1,0 +1,17 @@
+@use "../../../assets/modules/colors" as *;
+
+* {
+  background-color: $backgroundLight;
+}
+
+.container,
+h1,
+h4,
+p {
+  border-radius: 10px;
+}
+
+a {
+  background-color: $backgroundDark;
+  color: $mint;
+}

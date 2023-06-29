@@ -1,0 +1,40 @@
+<div class="myprofile col-6 offset-3 pt-5 mt-5">
+  <div class="dialog shadow p-3">
+    <div>
+      <div
+        class="header col-12 p-4 border-0 border-radius-xl my-3 text-secondary mb-5"
+      >
+        <h1 class="modal-title fs-5 text-center" style="font-weight: bold">
+          PROFIL
+        </h1>
+        <hr />
+      </div>
+      <div class="container-fluid">
+        <h3 class="mb-5">{{ user.name }}</h3>
+        <h5 class="">Adataim:</h5>
+        <hr />
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered shadow">
+          <thead>
+            <tr>
+              <th>Városom:</th>
+              <th>E-mailem:</th>
+              <th>Korom:</th>
+              <th>Eddigi támogatásom:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ user.city }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.age }} év</td>
+              <td>{{ user.amount }} Ft</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

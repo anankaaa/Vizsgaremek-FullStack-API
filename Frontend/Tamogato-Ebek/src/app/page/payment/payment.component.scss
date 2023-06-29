@@ -1,0 +1,20 @@
+@use "../../../assets/modules/colors" as *;
+
+.payment {
+  height: 80vh;
+}
+
+.dialog {
+  background: linear-gradient($backgroundDarkgreen, $backgroundDarkYellow);
+  border-radius: 5px;
+}
+
+h5 {
+  font-weight: 700;
+}
+
+.header {
+  background-color: $headerBackground;
+  border-radius: 2px;
+  box-shadow: 4px 4px 2px $boxshadowGrey;
+}

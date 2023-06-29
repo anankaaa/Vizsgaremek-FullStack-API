@@ -1,0 +1,20 @@
+@use "../../../assets/modules/colors" as *;
+
+.accordion {
+  border-radius: 5px;
+  width: 80%;
+}
+
+.accordion-button {
+  border: solid $backgroundDark 2px;
+  background-color: $mint;
+  font-weight: bolder;
+
+  color: $backgroundDark;
+  box-shadow: 4px 2px $successBoxshadow;
+}
+
+.accordion-collapse {
+  color: $mint;
+  background-color: $backgroundDark;
+}

@@ -1,0 +1,42 @@
+@use "../../../assets/modules/colors" as *;
+
+.card {
+  box-shadow: 4px 3px darkblue;
+
+  &:hover {
+    box-shadow: 6px 5px 5px darkblue;
+    cursor: pointer;
+  }
+}
+
+.content {
+  background-color: rgba(229, 240, 250, 0.5);
+}
+
+.button-support {
+  border: solid darkblue 2px;
+  background-color: $buttonGreen;
+  color: darkblue;
+  font-weight: bolder;
+
+  &:hover {
+    box-shadow: 2px 2px 5px black;
+    background-color: $buttonGreenHover;
+    color: black;
+  }
+}
+
+.title {
+  color: white;
+  background-image: url("../../../assets/img/pehelyfelho.jpg");
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+span {
+  font-weight: bolder;
+}
+
+.progress-bar {
+  background-color: $aidCardProgressBlue;
+}

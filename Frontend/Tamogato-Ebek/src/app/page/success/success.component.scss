@@ -1,0 +1,28 @@
+@use "../../../assets/modules/colors" as *;
+
+* {
+  background-color: $backgroundLight;
+}
+
+.container,
+h1,
+h4,
+p {
+  border-radius: 10px;
+}
+
+button {
+  border: solid black 2px;
+  background-color: $backgroundLightYellow;
+  color: black;
+
+  &:hover {
+    box-shadow: 2px 2px 5px black;
+    background-color: $backgroundAlmond;
+  }
+}
+
+a {
+  background-color: $backgroundDark;
+  color: $mint;
+}

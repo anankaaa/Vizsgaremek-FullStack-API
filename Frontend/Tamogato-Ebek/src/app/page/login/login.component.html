@@ -1,0 +1,48 @@
+<section class="login col-6 offset-3 container-md mt-3">
+  <form
+    class="login-form p-3 pb-3 mt-5 shadow"
+    *ngIf="loginForm"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="header p-4">
+      <h1 class="text-center mt-3 pt-3">Bejelentkezés</h1>
+      <hr />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label mt-3">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="email@email.com"
+        required
+      />
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="password" class="form-label">Jelszó</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        placeholder="******"
+        required
+      />
+    </div>
+
+    <div class="alert alert-danger" [hidden]="!alert">
+      <strong>Helytelen email cím vagy jelszó!</strong>
+    </div>
+
+    <button
+      [disabled]="loginForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Elküld
+    </button>
+  </form>
+</section>

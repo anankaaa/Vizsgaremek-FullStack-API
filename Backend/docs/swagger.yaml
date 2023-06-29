@@ -1,0 +1,706 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: TamogatoEbek API
+  description: API to illustrate REST API concepts of TamogatoEbek webpage.
+servers:
+  - url: http://localhost:3000/api/
+paths:
+  /dogs:
+    get:
+      description: Returns a list of dogs.
+      tags:
+        - Dogs
+      responses:
+        "200":
+          description: List of dogs returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Dog"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new Dog
+      tags:
+        - Dogs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Dog"
+      responses:
+        "201":
+          description: Dog has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dog"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /dogs/{dog_id}:
+    get:
+      description: Returns the dog with the given ID
+      tags:
+        - Dogs
+      parameters:
+        - name: dog_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Dog data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dog"
+        "404":
+          description: Dog with the given ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates a dog selected by Id
+      tags:
+        - Dogs
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Dog"
+      responses:
+        "200":
+          description: Dog has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dog"
+        "400":
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes a dog selected by Id
+      tags:
+        - Dogs
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Dog has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "404":
+          description: Dog with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /aid:
+    get:
+      description: Returns a list of aids.
+      tags:
+        - Aids
+      responses:
+        "200":
+          description: List of aids returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Aid"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new Aid
+      tags:
+        - Aids
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Aid"
+      responses:
+        "201":
+          description: Aid has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Aid"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /aid/{aid_id}:
+    get:
+      description: Returns the aid with the given ID
+      security:
+        - bearerAuth: []
+      tags:
+        - Aids
+      parameters:
+        - name: aid_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Aid data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Aid"
+        "404":
+          description: Aid with the given ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates an aid selected by Id
+      security:
+        - bearerAuth: []
+      tags:
+        - Aids
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Aid"
+      responses:
+        "200":
+          description: Aid has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Aid"
+        "400":
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes an Aid selected by Id
+      tags:
+        - Aids
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Aid has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "404":
+          description: Aid with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /success:
+    get:
+      description: Returns a list of successes.
+      tags:
+        - Successes
+      responses:
+        "200":
+          description: List of successes returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Success"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new Success
+      tags:
+        - Successes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Success"
+      responses:
+        "201":
+          description: Success has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Success"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /success/{success_id}:
+    get:
+      description: Returns the success with the given ID
+      tags:
+        - Successes
+      parameters:
+        - name: success_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Success"
+        "404":
+          description: Success with the given ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates a success selected by Id
+      tags:
+        - Successes
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Success"
+      responses:
+        "200":
+          description: Success has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Success"
+        "400":
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes a Success selected by Id
+      tags:
+        - Successes
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "404":
+          description: Success with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users:
+    get:
+      description: Returns a list of users.
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      responses:
+        "200":
+          description: List of users returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Creates a new User
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: User has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/{user_id}:
+    get:
+      description: Returns the user with the given ID
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User with the given ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: Updates a user selected by Id
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: User has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      description: Deletes a User selected by Id
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        "404":
+          description: User with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Dog:
+      type: object
+      required:
+        - name
+        - breed
+        - age
+        - learning
+        - deployable
+        - url
+      properties:
+        name:
+          type: string
+        breed:
+          type: string
+        age:
+          type: number
+        learning:
+          type: boolean
+        deployable:
+          type: boolean
+        url:
+          type: string
+    Aid:
+      type: object
+      required:
+        - title
+        - details
+        - date
+        - amount
+        - collected
+        - active
+        - payment
+      properties:
+        title:
+          type: string
+        details:
+          type: string
+        date:
+          type: string
+        amount:
+          type: number
+        collected:
+          type: number
+        active:
+          type: boolean
+        payment:
+          type: number
+    Success:
+      type: object
+      required:
+        - title
+        - place
+        - date
+        - success
+        - details
+      properties:
+        title:
+          type: string
+        place:
+          type: string
+        date:
+          type: string
+        success:
+          type: boolean
+        details:
+          type: string
+    User:
+      type: object
+      required:
+        - name
+        - city
+        - email
+        - password
+        - age
+        - amount
+        - role
+      properties:
+        name:
+          type: string
+        city:
+          type: string
+        email:
+          type: string
+        password:
+          type: number
+        age:
+          type: number
+        amount:
+          type: number
+        role:
+          type: number
+    Error:
+      type: object
+      required:
+        - message
+        - has_error
+      properties:
+        message:
+          type: string
+        has_error:
+          type: boolean

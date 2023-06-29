@@ -1,0 +1,132 @@
+<div class="row pt-5 mb-5">
+  <div *ngIf="user$ | async as user" class="container col-6 offset-3 shadow">
+    <div class="header col-12 pt-1 pb-1 border-0 mb-4 text-secondary">
+      <h1 class="mt-5 text-center">Felhasználó szerkesztés</h1>
+      <hr class="mx-auto" style="width: 50%" />
+      <hr class="mx-auto mb-5" style="width: 20%" />
+    </div>
+
+    <small [hidden]="eventForm.valid">
+      Minden mezőt kötelező kitölteni helyes adatokkal!
+    </small>
+    <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, user)">
+      <div class="form-group mb-2 mt-3">
+        <label class="mb-2">Név</label>
+        <input
+          name="name"
+          [(ngModel)]="user.name"
+          type="text"
+          class="form-control"
+          patter="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
+          required
+        />
+        <div [hidden]="eventForm.controls['name'].valid" class="error-message">
+          Maximum 4 tagú név összesen 70 karakterig, angol ABC szerint.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="mb-2">Város</label>
+        <input
+          name="city"
+          [(ngModel)]="user.city"
+          type="text"
+          class="form-control"
+          patter="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
+          required
+        />
+        <div [hidden]="eventForm.controls['city'].valid" class="error-message">
+          Maximum 4 tagú név összesen 70 karakterig, angol ABC szerint.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="mb-2">Email</label>
+        <input
+          name="email"
+          [(ngModel)]="user.email"
+          type="email"
+          class="form-control"
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+          required
+        />
+        <div [hidden]="eventForm.controls['email'].valid" class="error-message">
+          Email formátumnak kell lennie, tartalmazhat speciális karaktereket.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="mb-2">Jelszó</label>
+        <input
+          name="password"
+          [(ngModel)]="user.password"
+          type="text"
+          class="form-control"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['password'].valid"
+          class="error-message"
+        >
+          Minimum 8 karakter, tartalmaznia kell legalább 1 nagybetűt, 1 kisbetűt
+          és 1 számot. Tartalmazhat speciális karaktert.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="mb-2">Kor</label>
+        <input
+          name="age"
+          [(ngModel)]="user.age"
+          type="number"
+          class="form-control"
+          pattern="[1-9]{1}[0-9]{0,1}|100"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['age'].valid"
+          class="error-message mb-2"
+        >
+          1 és 100 között kell lennie a megadott kornak.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="mb-2">Összeg</label>
+        <input
+          name="amount"
+          [(ngModel)]="user.amount"
+          type="number"
+          class="form-control"
+          pattern="^([1-9][0-9]{0,6}|100000000)$"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['amount'].valid"
+          class="error-message mb-2"
+        >
+          1 és 100.000.000 között kell lennie a megadott összegnek.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="mb-2">Beosztás (1-es admin, 2-es user)</label>
+        <input
+          name="role"
+          [(ngModel)]="user.role"
+          type="number"
+          class="form-control"
+          pattern="[1-2]{1}"
+          required
+        />
+        <div [hidden]="eventForm.controls['role'].valid" class="error-message">
+          1-es lehet az admin, 2-es lehet a user.
+        </div>
+      </div>
+
+      <button
+        (click)="showToaster()"
+        [disabled]="eventForm.invalid"
+        type="submit"
+        class="btn btn-success form-control btn-lg mt-2 mb-5"
+      >
+        <i class="fa fa-floppy-o" aria-hidden="true"></i> Mentés
+      </button>
+    </form>
+  </div>
+</div>

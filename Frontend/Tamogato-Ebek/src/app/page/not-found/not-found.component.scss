@@ -1,0 +1,16 @@
+@use "../../../assets/modules/colors" as *;
+
+div {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($backgroundDarkgreen, $backgroundDarkYellow);
+
+  p {
+    font-size: 8.5rem;
+  }
+}

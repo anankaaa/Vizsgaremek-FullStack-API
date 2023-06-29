@@ -1,0 +1,19 @@
+<h1 class="col-12 p-4 border-0 border-radius-xl my-3 text-secondary">Kutyák</h1>
+
+<div class="row">
+  <div *ngIf="dogList$ | async as dogList" class="col-12">
+    <button
+      class="btn btn-primary btn-lg mb-3 ms-3"
+      [routerLink]="['/dog-editor', 0]"
+    >
+      Új kutya
+    </button>
+    <app-data-table
+      [listers]="dogList"
+      [columns]="columns"
+      (onDelete)="onDelete($event)"
+      (onEdit)="onEdit($event)"
+    >
+    </app-data-table>
+  </div>
+</div>

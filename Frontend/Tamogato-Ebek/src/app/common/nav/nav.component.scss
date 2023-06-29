@@ -1,0 +1,63 @@
+@use "../../../assets/modules/colors" as *;
+
+nav {
+  opacity: 2;
+  background-color: $navbarBackground;
+
+  a {
+    font-weight: 700;
+    padding-left: 5px;
+
+    &:hover {
+      background-color: $navbarGreen;
+      color: $navbarWhite;
+      border-radius: 2px;
+      box-shadow: 2px 2px 2px $navbarDarkGreen;
+    }
+  }
+
+  .user {
+    background-color: lightgreen;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px darkolivegreen;
+  }
+
+  .users {
+    background-color: lightblue;
+    box-shadow: 2px 2px 2px darkblue;
+    padding: 10px;
+    color: black;
+    border-radius: 5px;
+  }
+
+  .profile {
+    background-color: $mint;
+    padding: 10px;
+    color: $backgroundDark;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px darkolivegreen;
+  }
+
+  .login {
+    background-color: $navbarGreen;
+    color: $navbarWhite;
+    padding: 10px;
+    font-weight: bolder;
+
+    &:hover {
+      box-shadow: 2px 2px 2px $navbarDarkGreen;
+    }
+  }
+
+  .logout:hover {
+    box-shadow: 2px 2px 2px black;
+  }
+
+  .navbar-brand {
+    background-color: $navbarGreen;
+    color: $navbarWhite;
+    border-radius: 5px;
+  }
+}
